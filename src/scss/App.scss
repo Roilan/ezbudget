@@ -1,0 +1,47 @@
+@import url('//cdn.jsdelivr.net/picnicss/4.1.1/picnic.min.css');
+@import 'colors';
+@import 'fonts';
+@import 'helpers';
+
+body {
+  font-family: 'lato';
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  li {
+    list-style-type: none;
+  }
+}
+
+.container {
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.category {
+  margin-top: 10px;
+
+  .category__title {
+    color: $lightBlue;
+    border-bottom: 3px solid $lightBlue;
+    font-size: 1.1em;
+    padding: .5em 0 .2em 0;
+    margin-bottom: .5em;
+    @extend %uppercase;
+  }
+
+  .category__list {
+    .category__list--item {
+      border-bottom: 1px solid $lightGreyOpacity;
+      display: flex;
+      font-size: 1.4em;
+      padding: 10px 0;
+
+      .category__list--item-value { margin-left: auto; }
+    } // category__list--item
+  } // category__list
+} // category

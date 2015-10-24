@@ -1,0 +1,17 @@
+@import 'colors';
+
+%uppercase {
+  text-transform: uppercase;
+}
+
+.green {
+  color: $lighterGreen;
+}
+
+.lightGrey {
+  color: $lightGrey;
+}
+
+.red {
+  color: $red;
+}
