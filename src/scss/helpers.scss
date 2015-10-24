@@ -1,17 +1,15 @@
 @import 'colors';
 
-%uppercase {
-  text-transform: uppercase;
-}
+%uppercase { text-transform: uppercase; }
 
-.green {
-  color: $lighterGreen;
-}
+.green { color: $lighterGreen; }
+.lightGrey { color: $lightGrey; }
+.red { color: $red; }
+.spaceBottom { margin-bottom: 60px; }
 
-.lightGrey {
-  color: $lightGrey;
-}
-
-.red {
-  color: $red;
+.container {
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-right: auto;
+  margin-left: auto;
 }

@@ -15,11 +15,11 @@ ul {
   }
 }
 
-.container {
-  padding-right: 25px;
-  padding-left: 25px;
-  margin-right: auto;
-  margin-left: auto;
+header.navbar {
+  background-color: $darkBlue;
+  color: white;
+  font-family: 'lato';
+  text-align: center;
 }
 
 .category {
@@ -45,3 +45,13 @@ ul {
     } // category__list--item
   } // category__list
 } // category
+
+.addTransaction {
+  background-color: $medBlue;
+  bottom: -5px;
+  height: 50px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  width: 100%;
+}
