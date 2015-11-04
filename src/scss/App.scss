@@ -15,11 +15,26 @@ ul {
   }
 }
 
-header.navbar {
+.navbar {
   background-color: $darkBlue;
   color: white;
+  display: flex;
   font-family: 'lato';
+  justify-content: center;
   text-align: center;
+
+  .navbar__back--button {
+    background: none;
+    margin-right: auto;
+    margin-top: 10px;
+
+    &:active, &:hover { box-shadow: none; }
+  }
+
+  .navbar__title {
+    margin-right: auto;
+    padding-right: 13%;
+  }
 }
 
 .category {
@@ -46,7 +61,7 @@ header.navbar {
   } // category__list
 } // category
 
-.addTransaction {
+.btnAddTransaction {
   background-color: $medBlue;
   bottom: -5px;
   height: 50px;

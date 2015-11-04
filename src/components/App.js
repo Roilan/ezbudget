@@ -6,6 +6,10 @@ import AddTransaction from './AddTransaction.js';
 import '../scss/App.scss';
 
 export default class App extends React.Component {
+  _bind(...methods) {
+    methods.forEach((method) => this[method] = this[method].bind(this));
+  }
+
   constructor() {
     super();
 
@@ -27,10 +31,12 @@ export default class App extends React.Component {
           {name: 'transportation', value: 230.00},
         ],
         'other': [
-          {name: 'insurance', value: 130.00}
+          {name: 'insurance', value: 130.00},
+          {name: 'insurance', value: -130.00},
         ]
       }
     }
+
   }
 
   render() {
@@ -39,7 +45,7 @@ export default class App extends React.Component {
         <Navbar />
         <div className='container'>
           <CategoryList categories={this.state.categories} />
-          <AddTransaction />
+          <AddTransaction categories={this.state.categories} />
         </div>
       </div>
     );

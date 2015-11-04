@@ -26,6 +26,14 @@ export default class CategoryList extends React.Component {
     return color;
   }
 
+  removeNegativeSign(value) {
+    if (value < 0) {
+      return value.slice(1, value.length);
+    } else {
+      return value;
+    }
+  }
+
   renderCategories() {
     let propCategories = this.props.categories;
 
@@ -38,7 +46,9 @@ export default class CategoryList extends React.Component {
         return (
           <li className='category__list--item' key={itemKey}>
             <span>{name}</span>
-            <span className={`category__list--item-value ${colorClass}`}>${item.value.toFixed(2)}</span>
+            <span className={`category__list--item-value ${colorClass}`}>
+              ${this.removeNegativeSign(item.value.toFixed(2))}
+            </span>
           </li>
         )
       });
@@ -68,3 +78,7 @@ export default class CategoryList extends React.Component {
     )
   }
 }
+
+CategoryList.propTypes = {
+  categories: React.PropTypes.object.isRequired
+};
