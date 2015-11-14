@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class Navbar extends React.Component {
   _bind(...methods) {
@@ -12,23 +13,19 @@ export default class Navbar extends React.Component {
   }
 
   renderBackBtn() {
-    var buttonType = this.props.buttonType;
-
-    if (buttonType === 'back') {
-      return (
+    return (
+      <Link to='/' className='navbar__back--button'>
         <button className='navbar__back--button'>&larr; Back</button>
-      )
-    }
-
-    return '';
+      </Link>
+    )
   }
 
   render() {
-    var navBarTitleClass = this.props.buttonType ? 'navbar__title' : '';
+    var navBarTitleClass = this.props.showBackBtn ? 'navbar__title' : '';
 
     return (
       <header className='navbar'>
-        {this.renderBackBtn()}
+        {this.props.showBackBtn ? this.renderBackBtn() : null}
         <h2 className={navBarTitleClass}>ezbudget</h2>
       </header>
     )
@@ -36,9 +33,5 @@ export default class Navbar extends React.Component {
 }
 
 Navbar.propTypes = {
-  buttonType: React.PropTypes.string
-};
-
-Navbar.defaultProps = {
-  buttonType: ''
+  showBackBtn: React.PropTypes.object
 };

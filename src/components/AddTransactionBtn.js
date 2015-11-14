@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router';
 
-export default class AddTransaction extends React.Component {
+export default class AddTransactionBtn extends React.Component {
   _bind(...methods) {
     methods.forEach((method) => this[method] = this[method].bind(this));
   }
@@ -17,9 +18,11 @@ export default class AddTransaction extends React.Component {
 
   render() {
     return (
-      <button className='btnAddTransaction' onClick={this.handleClick}>
-        Add Transaction
-      </button>
+      <Link to='/addtransaction'>
+        <button className='btnAddTransaction' onClick={this.handleClick}>
+          Add Transaction
+        </button>
+      </Link>
     )
   }
 }

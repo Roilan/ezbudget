@@ -1,7 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar.js';
-import CategoryList from './CategoryList.js';
-import AddTransaction from './AddTransaction.js';
+import Category from './Category.js';
 
 import '../scss/App.scss';
 
@@ -36,17 +35,13 @@ export default class App extends React.Component {
         ]
       }
     }
-
   }
 
   render() {
     return (
       <div>
-        <Navbar />
-        <div className='container'>
-          <CategoryList categories={this.state.categories} />
-          <AddTransaction categories={this.state.categories} />
-        </div>
+        <Navbar showBackBtn={this.props.children} />
+        {this.props.children || <Category categories={this.state.categories} />}
       </div>
     );
   }
