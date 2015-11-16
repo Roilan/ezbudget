@@ -1,14 +1,11 @@
 import React from 'react';
 import Navbar from './Navbar.js';
 import Category from './Category.js';
+import AddTransactionView from './AddTransactionView.js';
 
 import '../scss/App.scss';
 
 export default class App extends React.Component {
-  _bind(...methods) {
-    methods.forEach((method) => this[method] = this[method].bind(this));
-  }
-
   constructor() {
     super();
 
@@ -33,15 +30,38 @@ export default class App extends React.Component {
           {name: 'insurance', value: 130.00, transactions: []},
           {name: 'insurance', value: -130.00, transactions: []}
         ]
-      }
+      },
+
+      currentView: 'default'
     }
+
+    this.updateView = this.updateView.bind(this);
+    this.switchView = this.switchView.bind(this);
+  }
+
+  updateView(newView) {
+    if (this.state.currentView !== newView) {
+      this.setState({currentView: newView});
+    }
+  }
+
+  switchView() {
+    let view = this.state.currentView;
+    let Component;
+
+    switch (view) {
+      case 'addTransaction' : Component = AddTransactionView; break;
+      default: Component = Category
+    }
+
+    return <Component categories={this.state.categories} updateView={this.updateView} />
   }
 
   render() {
     return (
       <div>
-        <Navbar showBackBtn={this.props.children} />
-        {this.props.children || <Category categories={this.state.categories} />}
+        <Navbar updateView={this.updateView} showBackBtn={this.state.currentView} />
+        {this.switchView()}
       </div>
     );
   }

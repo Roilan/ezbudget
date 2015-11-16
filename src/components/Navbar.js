@@ -2,30 +2,30 @@ import React from 'react';
 import { Link } from 'react-router';
 
 export default class Navbar extends React.Component {
-  _bind(...methods) {
-    methods.forEach((method) => this[method] = this[method].bind(this));
-  }
-
   constructor(props) {
     super(props);
 
-    this._bind('renderBackBtn');
+    this.handleClick = this.handleClick.bind(this);
+    this.renderBackBtn = this.renderBackBtn.bind(this);
+  }
+
+  handleClick() {
+    this.props.updateView('default');
   }
 
   renderBackBtn() {
     return (
-      <Link to='/' className='navbar__back--button'>
-        <button className='navbar__back--button'>&larr; Back</button>
-      </Link>
+      <button className='navbar__back--button' onClick={this.handleClick}>&larr; Back</button>
     )
   }
 
   render() {
-    var navBarTitleClass = this.props.showBackBtn ? 'navbar__title' : '';
+    let showBackBtn = this.props.showBackBtn === 'default' ? false : true;
+    let navBarTitleClass = showBackBtn ? 'navbar__title' : '';
 
     return (
       <header className='navbar'>
-        {this.props.showBackBtn ? this.renderBackBtn() : null}
+        {showBackBtn ? this.renderBackBtn() : null}
         <h2 className={navBarTitleClass}>ezbudget</h2>
       </header>
     )
@@ -33,5 +33,6 @@ export default class Navbar extends React.Component {
 }
 
 Navbar.propTypes = {
-  showBackBtn: React.PropTypes.object
+  showBackBtn: React.PropTypes.string.isRequired,
+  updateView: React.PropTypes.func.isRequired
 };

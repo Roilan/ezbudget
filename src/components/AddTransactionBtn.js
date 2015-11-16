@@ -13,20 +13,19 @@ export default class AddTransactionBtn extends React.Component {
   }
 
   handleClick() {
-    //console.log(Object.keys(this.props.categories));
+    this.props.updateView('addTransaction');
   }
 
   render() {
     return (
-      <Link to='addtransaction' state={this.props.categories}>
-        <button className='btnAddTransaction' onClick={this.handleClick}>
-          Add Transaction
-        </button>
-      </Link>
+      <button className='btnAddTransaction' onClick={this.handleClick}>
+        Add Transaction
+      </button>
     )
   }
 }
 
 AddTransactionBtn.PropTypes = {
-  categories: React.PropTypes.object.isRequired
+  categories: React.PropTypes.object.isRequired,
+  updateView: React.PropTypes.func.isRequired
 };

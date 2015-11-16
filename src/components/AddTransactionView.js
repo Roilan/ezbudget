@@ -8,10 +8,10 @@ export default class AddTransactionView extends React.Component {
   }
 
   renderCategoryNames() {
-    let state = this.props.location.state;
+    let categories = this.props.categories;
 
-    let stateArr = Object.keys(state).map((title, key) => {
-      let items = state[title].map((item, itemKey) => {
+    let stateArr = Object.keys(categories).map((title, key) => {
+      let items = categories[title].map((item, itemKey) => {
         return (
           <li key={itemKey}>
             {item.name}
@@ -42,3 +42,7 @@ export default class AddTransactionView extends React.Component {
     )
   }
 }
+
+AddTransactionView.PropTypes = {
+  categories: React.PropTypes.object.isRequired
+};

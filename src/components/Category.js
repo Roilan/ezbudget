@@ -8,12 +8,13 @@ export default class Category extends React.Component {
     return (
       <div className='container'>
         <CategoryList categories={this.props.categories} />
-        <AddTransactionBtn categories={this.props.categories} />
+        <AddTransactionBtn {...this.props} />
       </div>
     )
   }
 }
 
 Category.propTypes = {
-  categories: React.PropTypes.object.isRequired
+  categories: React.PropTypes.object.isRequired,
+  updateView: React.PropTypes.func.isRequired
 };
