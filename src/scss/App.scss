@@ -61,6 +61,21 @@ ul {
   } // category__list
 } // category
 
+.general-category {
+  font-size: 1.4em;
+  margin: 10px 0px;
+  text-align: center;
+
+  .general-category__list {
+    .general-category__list-item {
+      border-bottom: 1px solid $lightGreyOpacity;
+      padding: 10px;
+
+      &.general-category__list-upper { text-transform: uppercase; }
+    }
+  }
+}
+
 .btnAddTransaction {
   background-color: $medBlue;
   bottom: -5px;

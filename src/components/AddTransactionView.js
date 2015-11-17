@@ -1,4 +1,5 @@
 import React from 'react';
+import TransactionOptions from './TransactionOptions';
 
 export default class AddTransactionView extends React.Component {
   constructor() {
@@ -13,21 +14,21 @@ export default class AddTransactionView extends React.Component {
     let stateArr = Object.keys(categories).map((title, key) => {
       let items = categories[title].map((item, itemKey) => {
         return (
-          <li key={itemKey}>
+          <li className='general-category__list-item general-category__list-upper' key={itemKey} onClick={() => { console.log(item.name) }}>
             {item.name}
           </li>
         )
       });
 
       return (
-        <ul key={key}>
+        <ul className='general-category__list' key={key}>
           {items}
         </ul>
       )
     });
 
     return (
-      <div>
+      <div className='general-category'>
         {stateArr}
       </div>
     )
@@ -36,8 +37,8 @@ export default class AddTransactionView extends React.Component {
   render() {
     return (
       <div className='container'>
-        <h1>hello transaction</h1>
-        {this.renderCategoryNames()}
+        {/*this.renderCategoryNames()*/}
+        <TransactionOptions />
       </div>
     )
   }
