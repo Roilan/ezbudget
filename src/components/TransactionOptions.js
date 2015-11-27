@@ -1,5 +1,6 @@
 import React from 'react';
 import { toCapital } from '../utils/helpers.js';
+import TransactionTotal from './TransactionTotal.js';
 
 export default class TransactionOptions extends React.Component {
   constructor() {
@@ -15,9 +16,9 @@ export default class TransactionOptions extends React.Component {
   renderOptions() {
     let items = this.state.options.map((item, key) => {
       return (
-        <li key={key}>
+        <li className='general-category__list-item' key={key}>
           <span>{toCapital(item)}: </span>
-          <span>Choose a {item}</span>
+          <span className='general-category__list--item-payee'>Choose a {item}</span>
         </li>
       )
     });
@@ -27,15 +28,19 @@ export default class TransactionOptions extends React.Component {
 
   render() {
     return (
-      <div className='general-category'>
-        <ul>
-          {this.renderOptions()}
+      <div>
+        <div className='general-category'>
+          <ul className='general-category__list'>
+            {this.renderOptions()}
 
-          <li>
-            <span>Date: </span>
-            <span>Today</span>
-          </li>
-        </ul>
+            <li className='general-category__list-item'>
+              <span>Date:</span>
+              <span className='general-category__list--item-payee'>Today</span>
+            </li>
+          </ul>
+        </div>
+
+        <TransactionTotal />
       </div>
     )
   }

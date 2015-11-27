@@ -54,6 +54,7 @@ export default class App extends React.Component {
       default: Component = Category
     }
 
+    window.scrollTo(0, 0);
     return <Component categories={this.state.categories} updateView={this.updateView} />
   }
 

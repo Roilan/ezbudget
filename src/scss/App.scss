@@ -51,7 +51,7 @@ ul {
 
   .category__list {
     .category__list--item {
-      border-bottom: 1px solid $lightGreyOpacity;
+      border-bottom: 1px solid $lightGrayOpacity;
       display: flex;
       font-size: 1.4em;
       padding: 10px 0;
@@ -68,10 +68,54 @@ ul {
 
   .general-category__list {
     .general-category__list-item {
-      border-bottom: 1px solid $lightGreyOpacity;
+      border-bottom: 1px solid $lightGrayOpacity;
+      display: flex;
       padding: 10px;
 
+      .general-category__list--item-payee  {
+        align-self: center;
+        color: $lightGray;
+        font-size: 0.8em;
+        margin-left: auto;
+      }
+
       &.general-category__list-upper { text-transform: uppercase; }
+    }
+  }
+}
+
+.transaction-total {
+  @extend %fullWidth;
+  background-color: $blueBg;
+  display: flex;
+
+  p {
+    color: $red;
+    margin: 20px 20px 20px auto;
+    margin-right: 20px;
+    font-size: 4em;
+    font-weight: 300;
+  }
+}
+
+.transaction-numbers {
+  @extend %fullWidth;
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  .transaction-numbers__list {
+    @extend %fullWidth;
+
+    .transaction-numbers__list-item {
+      background-color: $grayNumBg;
+      border: 2px solid white;
+      display: inline-block;
+      padding: 30px 50px;
+      font-size: 3em;
+      margin-bottom: 0px;
     }
   }
 }

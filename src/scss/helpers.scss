@@ -3,7 +3,7 @@
 %uppercase { text-transform: uppercase; }
 
 .green { color: $lighterGreen; }
-.lightGrey { color: $lightGrey; }
+.lightGrey { color: $lightGray; }
 .red { color: $red; }
 .spaceBottom { margin-bottom: 60px; }
 
@@ -12,4 +12,8 @@
   padding-left: 25px;
   margin-right: auto;
   margin-left: auto;
+}
+
+%fullWidth {
+  margin: 0px -25px;
 }
