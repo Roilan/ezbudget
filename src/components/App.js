@@ -37,6 +37,7 @@ export default class App extends React.Component {
 
     this.updateView = this.updateView.bind(this);
     this.switchView = this.switchView.bind(this);
+    this.updateCategoryItem = this.updateCategoryItem.bind(this);
   }
 
   updateView(newView) {
@@ -55,7 +56,18 @@ export default class App extends React.Component {
     }
 
     window.scrollTo(0, 0);
-    return <Component categories={this.state.categories} updateView={this.updateView} />
+    return <Component
+              categories={this.state.categories}
+              updateView={this.updateView}
+              updateCategoryItem={this.updateCategoryItem}
+            />
+  }
+
+  updateCategoryItem(name, value) {
+    // todo: change this later
+    name = name || 'rent';
+
+    console.log(value)
   }
 
   render() {
