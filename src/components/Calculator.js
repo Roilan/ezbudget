@@ -23,7 +23,7 @@ export default class Calculator extends React.Component {
 
     if (option === 'K' && this.state.amount !== 0) {
       // todo: bring in the budget category and use that as name
-      this.props.addNewCategoryItem('Monthly Bills', 'rent', 'landlord', this.state.amount);
+      this.props.addNewCategoryItem('Monthly Bills', 'internet', 'landlord', this.state.amount);
       this.props.updateView(this.props.previousView);
     }
   }

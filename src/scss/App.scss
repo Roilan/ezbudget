@@ -70,7 +70,8 @@ ul {
     .general-category__list-item {
       border-bottom: 1px solid $lightGrayOpacity;
       display: flex;
-      padding: 10px;
+      justify-content: center;
+      padding: 15px;
 
       .general-category__list--item-payee  {
         align-self: center;

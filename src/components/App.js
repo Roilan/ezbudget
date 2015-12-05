@@ -69,8 +69,7 @@ export default class App extends React.Component {
   }
 
   calculateCategoryTotal(transactions) {
-    const total = transactions.map(item => item.value).reduce((prev, next) => prev + next);
-    return total;
+    return transactions.map(item => item.value).reduce((prev, next) => prev + next);
   }
 
   addNewCategoryItem(categoryName, name, payee, value) {
