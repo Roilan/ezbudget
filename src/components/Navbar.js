@@ -10,7 +10,7 @@ export default class Navbar extends React.Component {
   }
 
   handleClick() {
-    this.props.updateView('default');
+    this.props.updateView(this.props.previousView);
   }
 
   renderBackBtn() {

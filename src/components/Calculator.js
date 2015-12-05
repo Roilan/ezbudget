@@ -21,8 +21,10 @@ export default class Calculator extends React.Component {
       this.setState(this.state);
     }
 
-    if (option === 'K') {
-      console.log(option)
+    if (option === 'K' && this.state.amount !== 0) {
+      // todo: bring in the budget category and use that as name
+      this.props.addNewCategoryItem('Monthly Bills', 'rent', 'landlord', this.state.amount);
+      this.props.updateView(this.props.previousView);
     }
   }
 
@@ -45,5 +47,7 @@ export default class Calculator extends React.Component {
 }
 
 Calculator.propTypes = {
-  updateCategoryItem: React.PropTypes.func.isRequired
+  addNewCategoryItem: React.PropTypes.func.isRequired,
+  updateView: React.PropTypes.func.isRequired,
+  previousView: React.PropTypes.string.isRequired
 }

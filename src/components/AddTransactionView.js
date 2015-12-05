@@ -83,12 +83,20 @@ export default class AddTransactionView extends React.Component {
           </ul>
         </div>
         {/* <CategoryOptions categories={this.props.categories} /> */}
-        <Calculator updateCategoryItem={this.props.updateCategoryItem} />
+        <Calculator
+          addNewCategoryItem={this.props.addNewCategoryItem}
+          updateView={this.props.updateView}
+          previousView={this.props.previousView}
+        />
       </div>
     )
   }
 }
 
 AddTransactionView.PropTypes = {
-  categories: React.PropTypes.object.isRequired
+  categories: React.PropTypes.object.isRequired,
+  addNewCategoryItem: React.PropTypes.func.isRequired,
+  updateView: React.PropTypes.func.isRequired,
+  currentView: React.PropTypes.string,
+  previousView: React.PropTypes.string.isRequired
 };

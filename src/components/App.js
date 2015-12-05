@@ -32,17 +32,22 @@ export default class App extends React.Component {
         ]
       },
 
-      currentView: 'default'
+      currentView: 'default',
+      previousView: ''
     }
 
     this.updateView = this.updateView.bind(this);
     this.switchView = this.switchView.bind(this);
-    this.updateCategoryItem = this.updateCategoryItem.bind(this);
+    this.addNewCategoryItem = this.addNewCategoryItem.bind(this);
+    this.calculateCategoryTotal = this.calculateCategoryTotal.bind(this);
   }
 
   updateView(newView) {
     if (this.state.currentView !== newView) {
-      this.setState({currentView: newView});
+      this.setState({
+        previousView: this.state.currentView,
+        currentView: newView
+      });
     }
   }
 
@@ -57,23 +62,44 @@ export default class App extends React.Component {
 
     window.scrollTo(0, 0);
     return <Component
-              categories={this.state.categories}
+              {...this.state}
               updateView={this.updateView}
-              updateCategoryItem={this.updateCategoryItem}
+              addNewCategoryItem={this.addNewCategoryItem}
             />
   }
 
-  updateCategoryItem(name, value) {
-    // todo: change this later
-    name = name || 'rent';
+  calculateCategoryTotal(transactions) {
+    const total = transactions.map(item => item.value).reduce((prev, next) => prev + next);
+    return total;
+  }
 
-    console.log(value)
+  addNewCategoryItem(categoryName, name, payee, value) {
+    let arrIndex;
+    let itemEntry = {payee, value};
+
+    let categories = this.state.categories;
+    let filterCategory = categories[categoryName].filter((item, index) => {
+      if (item.name === name) {
+        arrIndex = index;
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    filterCategory = filterCategory[0];
+
+    filterCategory.transactions.push(itemEntry)
+    filterCategory.value = this.calculateCategoryTotal(filterCategory.transactions)
+
+    this.setState({categories});
   }
 
   render() {
     return (
       <div>
-        <Navbar updateView={this.updateView} showBackBtn={this.state.currentView} />
+        <Navbar updateView={this.updateView} showBackBtn={this.state.currentView} previousView={this.state.previousView} />
+        <button onClick={() => console.log(this.state)}>State</button>
         {this.switchView()}
       </div>
     );
