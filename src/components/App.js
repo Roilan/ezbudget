@@ -72,7 +72,7 @@ export default class App extends React.Component {
     return transactions.map(item => item.value).reduce((prev, next) => prev + next);
   }
 
-  addNewCategoryItem(categoryName, name, payee, value) {
+  addNewCategoryItem({categoryName, name, payee, value}) {
     let arrIndex;
     let itemEntry = {payee, value};
 

@@ -14,6 +14,7 @@ export default class Calculator extends React.Component {
   }
 
   updateAmount(option) {
+    let { categoryParent, categorySelected } = this.props;
     // TODO: figure out decimals later
     if (typeof(option) === 'number') {
       this.state.amount += option;
@@ -21,9 +22,15 @@ export default class Calculator extends React.Component {
       this.setState(this.state);
     }
 
-    if (option === 'K' && this.state.amount !== 0) {
+    if (option === 'K' && this.state.amount !== 0 && categoryParent !== '' && categorySelected !== '') {
+      let obj = {
+        categoryName: categoryParent,
+        name: categorySelected,
+        payee: 'foo',
+        value: this.state.amount
+      };
       // todo: bring in the budget category and use that as name
-      this.props.addNewCategoryItem('Monthly Bills', 'internet', 'landlord', this.state.amount);
+      this.props.addNewCategoryItem(obj);
       this.props.updateView(this.props.previousView);
     }
   }

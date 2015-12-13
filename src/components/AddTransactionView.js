@@ -12,6 +12,7 @@ export default class AddTransactionView extends React.Component {
       budgetOptions: ['payee', 'category'],
       payeeSelected: '',
       categorySelected: '',
+      categoryParent: '',
       displayCategoryOptions: false,
       displayPayeeOptions: false
     }
@@ -50,12 +51,13 @@ export default class AddTransactionView extends React.Component {
     return items;
   }
 
-  handleOptionSelection(type, name) {
+  handleOptionSelection({type, name, title}) {
     let display = `display${toCapital(type)}Options`;
     let typeSelected = `${type}Selected`;
 
     this.state[typeSelected] = name;
     this.state[display] = false;
+    this.state.categoryParent = title;
     this.setState(this.state);
   }
 
@@ -83,6 +85,7 @@ export default class AddTransactionView extends React.Component {
           addNewCategoryItem={this.props.addNewCategoryItem}
           updateView={this.props.updateView}
           previousView={this.props.previousView}
+          {...this.state}
         />
       </div>
     )
